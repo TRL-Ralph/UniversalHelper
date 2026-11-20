@@ -1,0 +1,200 @@
+/* Learn — filters, article grids, article reader */
+
+.verified-card .verified-icon {
+  display: block;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 8px;
+}
+
+.verified-card h2 {
+  margin-bottom: 6px;
+  font-size: var(--fs-md);
+}
+
+.verified-card p {
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  text-align: left;
+}
+
+.chip svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+
+#libraryView .chip-row {
+  margin-bottom: 24px;
+}
+
+.featured-head {
+  margin-top: 4px;
+}
+
+.featured-grid {
+  margin-bottom: 30px;
+  --cols: 3;
+}
+
+.article-grid {
+  --cols: 3;
+}
+
+.featured-grid .media-body {
+  gap: 8px;
+  padding: 16px;
+}
+
+.featured-grid .media-title {
+  font-size: var(--fs-lg);
+}
+
+.featured-grid .media-desc {
+  font-size: var(--fs-base);
+}
+
+.article-grid .media-title {
+  font-size: var(--fs-md);
+}
+
+/* Uniform card sizes: every card in a grid is the same height no matter how long
+   its title is or which tag is selected. Long text is clamped instead of growing. */
+.featured-grid .media-card--v {
+  height: 350px;
+}
+
+.article-grid .media-card--h,
+.related .media-card--h {
+  height: 156px;
+  min-height: 0;
+}
+
+/* ---------- article reader ---------- */
+.article-view {
+  max-width: 1000px;
+}
+
+.article-back {
+  margin-bottom: 22px;
+}
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+.article-title {
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+
+.article-deck {
+  margin-bottom: 24px;
+  font-size: var(--fs-md);
+  line-height: 1.65;
+  color: #456b89;
+}
+
+.article-cover {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  border-radius: 18px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+  object-fit: cover;
+}
+
+.article-body {
+  max-width: 740px;
+  margin: 0 auto;
+  font-size: var(--fs-md);
+  line-height: 1.85;
+  color: #2e4f6a;
+}
+
+.article-body h2 {
+  margin: 30px 0 8px;
+}
+
+.article-body p {
+  margin-bottom: 16px;
+}
+
+.article-callout {
+  padding: 17px 20px;
+  border-left: 4px solid #39a1ca;
+  border-radius: 0 12px 12px 0;
+  margin: 24px 0;
+  color: #225a7c;
+  background: #e4f4fa;
+}
+
+.article-disclaimer {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  margin-top: 28px;
+  font-size: var(--fs-sm);
+  color: #68849a;
+}
+
+.related {
+  max-width: 740px;
+  margin: 36px auto 0;
+}
+
+.related .card-grid {
+  --cols: 1;
+}
+
+@media (min-width: 1560px) {
+  .article-grid {
+    --cols: 4;
+  }
+}
+
+@media (max-width: 1100px) {
+  .featured-grid,
+  .article-grid {
+    --cols: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .featured-grid,
+  .article-grid {
+    --cols: 1;
+  }
+
+  #libraryView .chip-row {
+    gap: 8px;
+  }
+
+  .article-body {
+    font-size: var(--fs-base);
+    line-height: 1.8;
+  }
+}
+
+.article-source {
+  margin: 1.25rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted, #5b6470);
+}
+
+.article-source a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.article-source-url {
+  font-size: 0.8rem;
+  word-break: break-all;
+  opacity: 0.8;
+}

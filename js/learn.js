@@ -1,0 +1,190 @@
+/* Learn — category filters, article cards, article reader, hash routing
+   Routes:  learn.html                    all articles
+            learn.html#category/Stress    filtered list
+            learn.html#article/<id>       reader                        */
+"use strict";
+
+(function (UH) {
+  const articles = UH.articles;
+  const featuredGrid = document.getElementById("featuredGrid");
+  const featuredHeading = document.getElementById("featuredHeading");
+  const libraryView = document.getElementById("libraryView");
+  const articleView = document.getElementById("articleView");
+  const heading = document.getElementById("articlesHeading");
+  const grid = document.getElementById("articleGrid");
+  const resultCount = document.getElementById("resultCount");
+  const emptyState = document.getElementById("emptyState");
+  const hero = document.getElementById("learnHero");
+  const filterRow = document.getElementById("filterRow");
+
+  // Fisher-Yates shuffle. Done once per page load so the order stays steady while
+  // switching tags, and is mixed up again on the next visit/refresh.
+  const shuffle = (list) => {
+    const copy = list.slice();
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  };
+  const shuffled = shuffle(articles);
+
+  const CATEGORIES = ["All", ...UH.articleCategories];
+  const BASE_TITLE = document.title;
+  let activeCategory = "All";
+
+  const GRID_ICON = `<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>`;
+  const clock = (min) =>
+    `<span class="meta-item"><img src="assets/icons/clock.png" alt="">${min} min read</span>`;
+
+  function renderFilters() {
+    filterRow.innerHTML = CATEGORIES.map(
+      (name) =>
+        `<button class="chip noselect" type="button" data-category="${name}" aria-pressed="false">${name === "All" ? GRID_ICON : ""}${name}</button>`,
+    ).join("");
+  }
+
+  function renderFeatured() {
+    const featured = UH.featuredArticleIds
+      .map((id) => articles.find((a) => a.id === id))
+      .filter(Boolean);
+    featuredGrid.innerHTML = featured
+      .map(
+        (a) => `
+      <a class="media-card media-card--v" href="#article/${a.id}" aria-label="Read ${UH.esc(a.title)}">
+        <span class="media-media noselect">${UH.articleImg(a)}
+          <span class="pill noselect" data-category="${a.category}">${UH.esc(a.category)}</span></span>
+        <span class="media-body">
+          <span class="media-title clamp-2 noselect">${UH.esc(a.title)}</span>
+          <span class="media-desc clamp-3 noselect">${UH.esc(a.deck)}</span>
+          <span class="meta noselect">${clock(a.readTime)}</span>
+        </span>
+      </a>`,
+      )
+      .join("");
+    const show = activeCategory === "All";
+    featuredGrid.hidden = !show;
+    featuredHeading.hidden = !show;
+  }
+
+  function cardMarkup(a) {
+    return `
+      <a class="media-card media-card--h" href="#article/${a.id}" aria-label="Read ${UH.esc(a.title)}">
+        <span class="media-media noselect">${UH.articleImg(a)}</span>
+        <span class="media-body">
+          <span class="pill noselect" data-category="${a.category}">${UH.esc(a.category)}</span>
+          <span class="media-title clamp-3 noselect">${UH.esc(a.title)}</span>
+          <span class="meta noselect">${clock(a.readTime)}</span>
+        </span>
+      </a>`;
+  }
+
+  function renderCards() {
+    // "All" skips the articles already shown under Featured; a tag lists everything in that category.
+    const featuredIds = new Set(UH.featuredArticleIds);
+    const visible =
+      activeCategory === "All"
+        ? shuffled.filter((a) => !featuredIds.has(a.id))
+        : shuffled.filter((a) => a.category === activeCategory);
+    grid.innerHTML = visible.map(cardMarkup).join("");
+    resultCount.textContent = `${visible.length} ${visible.length === 1 ? "article" : "articles"}`;
+    emptyState.hidden = visible.length !== 0;
+  }
+
+  function setCategory(category, { updateHash = true } = {}) {
+    activeCategory = CATEGORIES.includes(category) ? category : "All";
+    filterRow.querySelectorAll(".chip").forEach((button) => {
+      const selected = button.dataset.category === activeCategory;
+      button.classList.toggle("selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    });
+    heading.textContent =
+      activeCategory === "All" ? "More Articles" : `${activeCategory} Articles`;
+    renderFeatured();
+    renderCards();
+    if (updateHash) {
+      const next =
+        activeCategory === "All"
+          ? location.pathname + location.search
+          : `#category/${activeCategory}`;
+      history.replaceState(null, "", next);
+    }
+  }
+
+  function showLibrary() {
+    articleView.hidden = true;
+    libraryView.hidden = false;
+    hero.hidden = false;
+    document.title = BASE_TITLE;
+  }
+
+  function showArticle(id) {
+    const article = articles.find((a) => a.id === id);
+    if (!article) {
+      showLibrary();
+      setCategory("All", { updateHash: false });
+      return;
+    }
+
+    libraryView.hidden = true;
+    hero.hidden = true;
+    articleView.hidden = false;
+    document.title = `${article.title} | UniHelper`;
+
+    const related = articles
+      .filter((a) => a.category === article.category && a.id !== article.id)
+      .slice(0, 2);
+    const sections = article.sections
+      .map(
+        ([title, text]) =>
+          `<section><h2>${UH.esc(title)}</h2><p>${UH.esc(text)}</p></section>`,
+      )
+      .join("");
+
+    articleView.innerHTML = `
+      <a class="btn btn-soft btn-sm article-back noselect" href="#learn"><span aria-hidden="true">←</span> Back to Articles</a>
+      <div class="article-meta">
+        <span class="pill noselect" data-category="${article.category}">${UH.esc(article.category)}</span>
+        <span class="noselect">${article.readTime} min read</span><span class="noselect">UniHelper Learn</span>
+      </div>
+      <h1 class="article-title">${UH.esc(article.title)}</h1>
+      <p class="article-deck">${UH.esc(article.deck)}</p>
+      ${UH.articleImg(article).replace("<img ", '<img class="article-cover" ')}
+      <div class="article-body">
+        ${sections}
+        <div class="article-callout"><strong>A gentle reminder:</strong> You deserve support, and you do not have to figure everything out at once. Take what feels useful from this article and move at your own pace.</div>
+        ${article.source ? `<p class="article-source"><strong>Source:</strong> ${UH.esc(article.source.name)}. Summarized in our own words. <a href="${UH.esc(article.source.url)}" target="_blank" rel="noopener">Read the original article</a><br><span class="article-source-url">${UH.esc(article.source.url)}</span></p>` : ""}
+        <p class="article-disclaimer">This article is for general educational purposes only. It is not a diagnosis or a substitute for individualized advice from a qualified mental health professional. If you are concerned about your well-being, consider speaking with a trusted professional or support person.</p>
+      </div>
+      ${
+        related.length
+          ? `<aside class="related noselect"><div class="section-head noselect"><h2>More in ${UH.esc(article.category)}</h2></div>
+        <div class="card-grid">${related.map(cardMarkup).join("")}</div></aside>`
+          : ""
+      }`;
+
+    UH.scrollToTop();
+  }
+
+  function route() {
+    const hash = decodeURIComponent(location.hash || "");
+    const article = hash.match(/^#article\/(.+)$/);
+    const category = hash.match(/^#category\/(.+)$/);
+
+    if (article) {
+      showArticle(article[1]);
+      return;
+    }
+    showLibrary();
+    setCategory(category ? category[1] : "All", { updateHash: false });
+  }
+
+  filterRow.addEventListener("click", (e) => {
+    const button = e.target.closest(".chip");
+    if (button) setCategory(button.dataset.category);
+  });
+
+  window.addEventListener("hashchange", route);
+  renderFilters();
+  route();
+})(window.UH);
