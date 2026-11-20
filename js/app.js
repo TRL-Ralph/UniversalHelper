@@ -173,7 +173,7 @@ window.UH = window.UH || {};
         <img class="brand-logo noselect" src="assets/images/logo.png" alt="">
         <span class="brand-copy">
           <span class="brand-name noselect">UniHelper</span>
-          <span class="brand-tag noselect">You're not alone. UMak is with you.</span>
+          <span class="brand-tag noselect">You're not alone. We are with you.</span>
         </span>
       </a>
       <img class="topbar-leaf noselect" src="assets/icons/bell-leaf.svg" alt="" aria-hidden="true">
@@ -214,7 +214,7 @@ window.UH = window.UH || {};
     if (main) {
       const footer = document.createElement("footer");
       footer.className = "site-footer";
-      footer.innerHTML = `<p class="noselect">UniHelper · UMak is with you.</p>`;
+      footer.innerHTML = `<p class="noselect">UniHelper · We are with you.</p>`;
       main.appendChild(footer);
     }
 

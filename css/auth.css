@@ -302,7 +302,7 @@ a {
   background: #a9c0dc;
 }
 
-.university-button {
+.signin-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -321,11 +321,11 @@ a {
   cursor: pointer;
 }
 
-.university-button:hover {
+.signin-button:hover {
   background: #eef5fc;
 }
 
-.university-button img {
+.signin-button img {
   width: 30px;
   height: 30px;
   object-fit: contain;

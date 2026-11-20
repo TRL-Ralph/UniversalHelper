@@ -24,7 +24,7 @@
       bubble: "Nice to meet you!",
       eyebrow: "WELCOME",
       title: "Hi, I'm Umi!",
-      html: `<p class="uh-lead noselect">I'll be your guide around <strong>UniHelper</strong>, a friendly corner of the internet made for UMak students.</p>
+      html: `<p class="uh-lead noselect">I'll be your guide around <strong>UniHelper</strong>, a friendly corner of the internet made for university students.</p>
          <p class="noselect">Give me a minute and I'll show you what this place is all about. It's quick, I promise.</p>`,
     },
     {
@@ -35,7 +35,7 @@
          <p>Stressed about deadlines? Feeling low? Just curious about taking better care of yourself? You're in the right place.</p>
          <div class="uh-pills">
            <span class="uh-pill uh-pill-a noselect">Judgment-free</span>
-           <span class="uh-pill uh-pill-b noselect">Made for UMak students</span>
+           <span class="uh-pill uh-pill-b noselect">Made for univesity students</span>
            <span class="uh-pill uh-pill-c noselect">Gentle &amp; supportive</span>
          </div>`,
     },
@@ -55,7 +55,7 @@
       eyebrow: "BEFORE YOU GO",
       title: "Because you matter.",
       html: `<p>On the Home page, tell me how you're feeling today and I'll point you to something that might help.</p>
-         <p class="uh-careful">UniHelper is a support space, not a replacement for professional care. If things feel too heavy, please reach out to the UMak Guidance Office or someone you trust.</p>
+         <p class="uh-careful">UniHelper is a support space, not a replacement for professional care. If things feel too heavy, please reach out to the Guidance Office or someone you trust.</p>
          <p class="uh-proto">This is a prototype, so a few features are still under construction.</p>`,
     },
   ];
