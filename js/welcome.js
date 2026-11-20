@@ -31,7 +31,7 @@
       bubble: "Let me explain!",
       eyebrow: "ABOUT THE WEBSITE",
       title: "What is UniHelper?",
-      html: `<p>UniHelper is a mental wellness website for University of Makati students. It's a safe, judgment-free space where you can read, reflect, connect with other students, and find support whenever school life feels heavy.</p>
+      html: `<p>UniHelper is a mental wellness website for students. It's a safe, judgment-free space where you can read, reflect, connect with other students, and find support whenever school life feels heavy.</p>
          <p>Stressed about deadlines? Feeling low? Just curious about taking better care of yourself? You're in the right place.</p>
          <div class="uh-pills">
            <span class="uh-pill uh-pill-a noselect">Judgment-free</span>
