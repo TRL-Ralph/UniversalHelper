@@ -35,7 +35,7 @@
          <p>Stressed about deadlines? Feeling low? Just curious about taking better care of yourself? You're in the right place.</p>
          <div class="uh-pills">
            <span class="uh-pill uh-pill-a noselect">Judgment-free</span>
-           <span class="uh-pill uh-pill-b noselect">Made for univesity students</span>
+           <span class="uh-pill uh-pill-b noselect">Made for university students</span>
            <span class="uh-pill uh-pill-c noselect">Gentle &amp; supportive</span>
          </div>`,
     },
