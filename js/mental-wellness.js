@@ -2,30 +2,30 @@
 "use strict";
 
 (function () {
-  const row = document.getElementById("typeFilter");
-  const grid = document.getElementById("exerciseGrid");
-  const count = document.getElementById("exerciseCount");
-  const cards = [...grid.querySelectorAll(".media-card")];
+  const filterRow = document.getElementById("typeFilter");
+  const exerciseGrid = document.getElementById("exerciseGrid");
+  const exerciseCount = document.getElementById("exerciseCount");
+  const exerciseCards = [...exerciseGrid.querySelectorAll(".media-card")];
 
-  function apply(type) {
-    let shown = 0;
-    cards.forEach((card) => {
-      const match = type === "all" || card.dataset.type === type;
-      card.hidden = !match;
-      if (match) shown += 1;
+  function filterByType(type) {
+    let visibleCount = 0;
+    exerciseCards.forEach((card) => {
+      const isMatch = type === "all" || card.dataset.type === type;
+      card.hidden = !isMatch;
+      if (isMatch) visibleCount += 1;
     });
-    row.querySelectorAll(".chip").forEach((chip) => {
-      const on = chip.dataset.type === type;
-      chip.classList.toggle("selected", on);
-      chip.setAttribute("aria-pressed", String(on));
+    filterRow.querySelectorAll(".chip").forEach((chip) => {
+      const isSelected = chip.dataset.type === type;
+      chip.classList.toggle("selected", isSelected);
+      chip.setAttribute("aria-pressed", String(isSelected));
     });
-    count.textContent = `${shown} ${shown === 1 ? "exercise" : "exercises"}`;
+    exerciseCount.textContent = `${visibleCount} ${visibleCount === 1 ? "exercise" : "exercises"}`;
   }
 
-  row.addEventListener("click", (e) => {
-    const chip = e.target.closest(".chip");
-    if (chip) apply(chip.dataset.type);
+  filterRow.addEventListener("click", (event) => {
+    const chip = event.target.closest(".chip");
+    if (chip) filterByType(chip.dataset.type);
   });
 
-  apply("all");
+  filterByType("all");
 })();

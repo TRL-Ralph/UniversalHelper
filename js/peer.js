@@ -8,7 +8,7 @@
   const heading = document.getElementById("threadHeading");
   const empty = document.getElementById("threadEmpty");
   const TAGS = [{ key: "all", label: "All" }, ...UH.threadTags];
-  const labelOf = (key) =>
+  const getTagLabel = (key) =>
     (TAGS.find((t) => t.key === key) || { label: key }).label;
   let active = "all";
 
@@ -29,7 +29,7 @@
         <div class="thread-body">
           <h3 class="thread-title">${UH.esc(t.title)}</h3>
           <p class="thread-excerpt clamp-2">${UH.esc(t.excerpt)}</p>
-          <ul class="thread-tags noselect">${t.tags.map((k) => `<li><span class="pill" data-category="${UH.esc(labelOf(k))}">${UH.esc(labelOf(k))}</span></li>`).join("")}</ul>
+          <ul class="thread-tags noselect">${t.tags.map((k) => `<li><span class="pill" data-category="${UH.esc(getTagLabel(k))}">${UH.esc(getTagLabel(k))}</span></li>`).join("")}</ul>
         </div>
         <div class="thread-meta">
           <div><img class="noselect" src="assets/icons/replies.png" alt=""><span class="noselect">${t.replies} replies</span></div>
@@ -42,7 +42,7 @@
 
     count.textContent = `${visible.length} ${visible.length === 1 ? "thread" : "threads"}`;
     heading.textContent =
-      active === "all" ? "All Threads" : `${labelOf(active)} Threads`;
+      active === "all" ? "All Threads" : `${getTagLabel(active)} Threads`;
     list.hidden = visible.length === 0;
     empty.hidden = visible.length !== 0;
     filter.querySelectorAll(".chip").forEach((chip) => {
@@ -80,3 +80,4 @@
   focusThread();
   window.addEventListener("hashchange", focusThread);
 })(window.UH);
+

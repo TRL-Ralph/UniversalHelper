@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var SEEN_KEY = "unihelper.welcomeSeen";
+  const SEEN_KEY = "unihelper.welcomeSeen";
 
   function alreadySeen() {
     try {
@@ -19,12 +19,12 @@
 
   if (alreadySeen()) return;
 
-  var STEPS = [
+  const STEPS = [
     {
       bubble: "Nice to meet you!",
       eyebrow: "WELCOME",
       title: "Hi, I'm Umi!",
-      html: `<p class="uh-lead noselect">I'll be your guide around <strong>UniHelper</strong>, a friendly corner of the internet made for university students.</p>
+      html: `<p class="welcome-lead noselect">I'll be your guide around <strong>UniHelper</strong>, a friendly corner of the internet made for university students.</p>
          <p class="noselect">Give me a minute and I'll show you what this place is all about. It's quick, I promise.</p>`,
     },
     {
@@ -33,21 +33,21 @@
       title: "What is UniHelper?",
       html: `<p>UniHelper is a mental wellness website for students. It's a safe, judgment-free space where you can read, reflect, connect with other students, and find support whenever school life feels heavy.</p>
          <p>Stressed about deadlines? Feeling low? Just curious about taking better care of yourself? You're in the right place.</p>
-         <div class="uh-pills">
-           <span class="uh-pill uh-pill-a noselect">Judgment-free</span>
-           <span class="uh-pill uh-pill-b noselect">Made for university students</span>
-           <span class="uh-pill uh-pill-c noselect">Gentle &amp; supportive</span>
+         <div class="welcome-pills">
+           <span class="welcome-pill welcome-pill--a noselect">Judgment-free</span>
+           <span class="welcome-pill welcome-pill--b noselect">Made for university students</span>
+           <span class="welcome-pill welcome-pill--c noselect">Gentle &amp; supportive</span>
          </div>`,
     },
     {
       bubble: "Take a look around!",
       eyebrow: "WHAT'S INSIDE",
       title: "Four ways we can help",
-      html: `<div class="uh-tiles">
-           <div class="uh-tile uh-tile-community noselect"><img class="noselect" src="assets/icons/community.svg" alt=""><div><strong>Community</strong><span>Share your story and read what other students are going through.</span></div></div>
-           <div class="uh-tile uh-tile-learn noselect"><img class="noselect" src="assets/icons/learn.svg" alt=""><div><strong>Learn</strong><span>Easy articles on stress, self-esteem, relationships and wellness.</span></div></div>
-           <div class="uh-tile uh-tile-help noselect"><img class="noselect" src="assets/icons/get-help.svg" alt=""><div><strong>Get Help</strong><span>Reach peer support or trusted professional support.</span></div></div>
-           <div class="uh-tile uh-tile-care noselect"><img class="noselect" src="assets/icons/mental-wellness.svg" alt=""><div><strong>Mental Wellness</strong><span>Guided exercises and a private journal to reset your mind.</span></div></div>
+      html: `<div class="welcome-tiles">
+           <div class="welcome-tile welcome-tile--community noselect"><img class="noselect" src="assets/icons/community.svg" alt=""><div><strong>Community</strong><span>Share your story and read what other students are going through.</span></div></div>
+           <div class="welcome-tile welcome-tile--learn noselect"><img class="noselect" src="assets/icons/learn.svg" alt=""><div><strong>Learn</strong><span>Easy articles on stress, self-esteem, relationships and wellness.</span></div></div>
+           <div class="welcome-tile welcome-tile--help noselect"><img class="noselect" src="assets/icons/get-help.svg" alt=""><div><strong>Get Help</strong><span>Reach peer support or trusted professional support.</span></div></div>
+           <div class="welcome-tile welcome-tile--care noselect"><img class="noselect" src="assets/icons/mental-wellness.svg" alt=""><div><strong>Mental Wellness</strong><span>Guided exercises and a private journal to reset your mind.</span></div></div>
          </div>`,
     },
     {
@@ -55,59 +55,59 @@
       eyebrow: "BEFORE YOU GO",
       title: "Because you matter.",
       html: `<p>On the Home page, tell me how you're feeling today and I'll point you to something that might help.</p>
-         <p class="uh-careful">UniHelper is a support space, not a replacement for professional care. If things feel too heavy, please reach out to the Guidance Office or someone you trust.</p>
-         <p class="uh-proto">This is a prototype, so a few features are still under construction.</p>`,
+         <p class="welcome-careful">UniHelper is a support space, not a replacement for professional care. If things feel too heavy, please reach out to the Guidance Office or someone you trust.</p>
+         <p class="welcome-proto">This is a prototype, so a few features are still under construction.</p>`,
     },
   ];
 
-  var overlay = document.createElement("div");
-  overlay.className = "uh-welcome";
+  const overlay = document.createElement("div");
+  overlay.className = "welcome-backdrop";
   overlay.id = "welcomeModal";
-  overlay.innerHTML = `<div class="uh-box noselect" role="dialog" aria-modal="true" aria-labelledby="uhTitle">
-       <aside class="uh-side" aria-hidden="true">
-         <span class="uh-orb uh-orb-1 noselect"></span>
-         <span class="uh-orb uh-orb-2 noselect"></span>
-         <span class="uh-orb uh-orb-3 noselect"></span>
-         <span class="uh-spark uh-spark-1 noselect"></span>
-         <span class="uh-spark uh-spark-2 noselect"></span>
-         <span class="uh-spark uh-spark-3 noselect"></span>
-         <div class="uh-bubble" id="uhBubble"></div>
-         <img class="uh-umi noselect" src="assets/images/umi-banner.png" alt="">
+  overlay.innerHTML = `<div class="welcome-box noselect" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
+       <aside class="welcome-side" aria-hidden="true">
+         <span class="welcome-orb welcome-orb--1 noselect"></span>
+         <span class="welcome-orb welcome-orb--2 noselect"></span>
+         <span class="welcome-orb welcome-orb--3 noselect"></span>
+         <span class="welcome-spark welcome-spark--1 noselect"></span>
+         <span class="welcome-spark welcome-spark--2 noselect"></span>
+         <span class="welcome-spark welcome-spark--3 noselect"></span>
+         <div class="welcome-bubble" id="welcomeBubble"></div>
+         <img class="welcome-umi noselect" src="assets/images/umi-banner.png" alt="">
        </aside>
-       <section class="uh-main">
-         <button class="uh-close" type="button" aria-label="Close">&times;</button>
-         <div class="uh-step" id="uhStep" aria-live="polite">
-           <p class="uh-eyebrow" id="uhEyebrow"></p>
-           <h2 id="uhTitle"></h2>
-           <div class="uh-body" id="uhBody"></div>
+       <section class="welcome-main">
+         <button class="welcome-close" type="button" aria-label="Close">&times;</button>
+         <div class="welcome-step" id="welcomeStep" aria-live="polite">
+           <p class="welcome-eyebrow" id="welcomeEyebrow"></p>
+           <h2 id="welcomeTitle"></h2>
+           <div class="welcome-body" id="welcomeBody"></div>
          </div>
-         <footer class="uh-foot">
-           <div class="uh-dots" id="uhDots"></div>
-           <div class="uh-nav">
-             <button class="uh-btn uh-btn-ghost" id="uhBack" type="button">Back</button>
-             <button class="uh-btn uh-btn-main" id="uhNext" type="button">Next</button>
+         <footer class="welcome-foot">
+           <div class="welcome-dots" id="welcomeDots"></div>
+           <div class="welcome-nav">
+             <button class="welcome-btn welcome-btn--ghost" id="welcomeBack" type="button">Back</button>
+             <button class="welcome-btn welcome-btn--main" id="welcomeNext" type="button">Next</button>
            </div>
          </footer>
        </section>
      </div>`;
 
-  var box = overlay.querySelector(".uh-box");
-  var stepEl = overlay.querySelector("#uhStep");
-  var eyebrowEl = overlay.querySelector("#uhEyebrow");
-  var titleEl = overlay.querySelector("#uhTitle");
-  var bodyEl = overlay.querySelector("#uhBody");
-  var bubbleEl = overlay.querySelector("#uhBubble");
-  var dotsEl = overlay.querySelector("#uhDots");
-  var backBtn = overlay.querySelector("#uhBack");
-  var nextBtn = overlay.querySelector("#uhNext");
-  var closeBtn = overlay.querySelector(".uh-close");
-  var current = 0;
-  var previousOverflow = "";
+  const box = overlay.querySelector(".welcome-box");
+  const stepEl = overlay.querySelector("#welcomeStep");
+  const eyebrowEl = overlay.querySelector("#welcomeEyebrow");
+  const titleEl = overlay.querySelector("#welcomeTitle");
+  const bodyEl = overlay.querySelector("#welcomeBody");
+  const bubbleEl = overlay.querySelector("#welcomeBubble");
+  const dotsEl = overlay.querySelector("#welcomeDots");
+  const backBtn = overlay.querySelector("#welcomeBack");
+  const nextBtn = overlay.querySelector("#welcomeNext");
+  const closeBtn = overlay.querySelector(".welcome-close");
+  let current = 0;
+  let previousOverflow = "";
 
   STEPS.forEach(function (step, index) {
-    var dot = document.createElement("button");
+    const dot = document.createElement("button");
     dot.type = "button";
-    dot.className = "uh-dot";
+    dot.className = "welcome-dot";
     dot.setAttribute(
       "aria-label",
       "Go to step " + (index + 1) + " of " + STEPS.length,
@@ -119,16 +119,16 @@
   });
 
   function show(index) {
-    var direction = index >= current ? "uh-from-right" : "uh-from-left";
+    let direction = index >= current ? "welcome-from-right" : "welcome-from-left";
     current = index;
-    var step = STEPS[index];
+    const step = STEPS[index];
 
     eyebrowEl.textContent = step.eyebrow;
     titleEl.textContent = step.title;
     bodyEl.innerHTML = step.html;
     bubbleEl.textContent = step.bubble;
 
-    stepEl.classList.remove("uh-from-right", "uh-from-left");
+    stepEl.classList.remove("welcome-from-right", "welcome-from-left");
     void stepEl.offsetWidth;
     stepEl.classList.add(direction);
 
@@ -171,14 +171,14 @@
     } else if (event.key === "ArrowLeft") {
       back();
     } else if (event.key === "Tab") {
-      var focusable = Array.prototype.filter.call(
+      const focusable = Array.prototype.filter.call(
         box.querySelectorAll("button"),
         function (el) {
           return el.style.visibility !== "hidden";
         },
       );
-      var index = focusable.indexOf(document.activeElement);
-      var target = event.shiftKey ? index - 1 : index + 1;
+      const index = focusable.indexOf(document.activeElement);
+      let target = event.shiftKey ? index - 1 : index + 1;
       if (target < 0) target = focusable.length - 1;
       if (target >= focusable.length) target = 0;
       event.preventDefault();
@@ -197,3 +197,4 @@
   nextBtn.focus();
   document.addEventListener("keydown", onKey, true);
 })();
+

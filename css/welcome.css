@@ -1,4 +1,4 @@
-.uh-welcome {
+.welcome-backdrop {
   position: fixed;
   inset: 0;
   z-index: 4000;
@@ -11,12 +11,12 @@
   font-family: "Playpen Sans", "Trebuchet MS", Arial, sans-serif;
 }
 
-.uh-welcome.open {
+.welcome-backdrop.open {
   display: flex;
-  animation: uh-fade 0.25s ease-out;
+  animation: welcome-fade 0.25s ease-out;
 }
 
-.uh-box {
+.welcome-box {
   position: relative;
   display: grid;
   grid-template-columns: 290px 1fr;
@@ -28,23 +28,23 @@
   background: #fff;
   color: #135b8f;
   box-shadow: 0 18px 50px rgba(8, 36, 60, 0.4);
-  animation: uh-pop 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  animation: welcome-pop 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
 }
 
-.uh-side {
+.welcome-side {
   position: relative;
   overflow: hidden;
   background: linear-gradient(165deg, #cfe9f8 0%, #dcf3ea 55%, #fdf0cf 100%);
 }
 
-.uh-orb {
+.welcome-orb {
   position: absolute;
   border-radius: 50%;
   opacity: 0.55;
-  animation: uh-drift 9s ease-in-out infinite;
+  animation: welcome-drift 9s ease-in-out infinite;
 }
 
-.uh-orb-1 {
+.welcome-orb--1 {
   top: -50px;
   left: -40px;
   width: 170px;
@@ -52,7 +52,7 @@
   background: #a9d3ee;
 }
 
-.uh-orb-2 {
+.welcome-orb--2 {
   bottom: 40px;
   right: -60px;
   width: 190px;
@@ -61,7 +61,7 @@
   animation-delay: -3s;
 }
 
-.uh-orb-3 {
+.welcome-orb--3 {
   bottom: -50px;
   left: -30px;
   width: 140px;
@@ -70,7 +70,7 @@
   animation-delay: -6s;
 }
 
-.uh-spark {
+.welcome-spark {
   position: absolute;
   width: 14px;
   height: 14px;
@@ -85,15 +85,15 @@
     0 50%,
     38% 38%
   );
-  animation: uh-twinkle 2.6s ease-in-out infinite;
+  animation: welcome-twinkle 2.6s ease-in-out infinite;
 }
 
-.uh-spark-1 {
+.welcome-spark--1 {
   top: 34%;
   left: 14%;
 }
 
-.uh-spark-2 {
+.welcome-spark--2 {
   top: 48%;
   right: 12%;
   width: 20px;
@@ -101,7 +101,7 @@
   animation-delay: -1s;
 }
 
-.uh-spark-3 {
+.welcome-spark--3 {
   bottom: 30%;
   left: 10%;
   width: 11px;
@@ -109,7 +109,7 @@
   animation-delay: -1.8s;
 }
 
-.uh-bubble {
+.welcome-bubble {
   position: absolute;
   top: 26px;
   left: 50%;
@@ -127,7 +127,7 @@
   transform: translateX(-50%);
 }
 
-.uh-bubble::after {
+.welcome-bubble::after {
   content: "";
   position: absolute;
   bottom: -8px;
@@ -139,11 +139,11 @@
   border-radius: 3px;
 }
 
-.uh-bubble.pop {
-  animation: uh-bubble 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.4);
+.welcome-bubble.pop {
+  animation: welcome-bubble 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.4);
 }
 
-.uh-umi {
+.welcome-umi {
   position: absolute;
   top: 70px;
   left: 50%;
@@ -154,10 +154,10 @@
   object-position: bottom;
   transform: translateX(-50%);
   filter: drop-shadow(0 8px 10px rgba(19, 91, 143, 0.22));
-  animation: uh-float 3.4s ease-in-out infinite;
+  animation: welcome-float 3.4s ease-in-out infinite;
 }
 
-.uh-main {
+.welcome-main {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -165,7 +165,7 @@
   overflow-y: auto;
 }
 
-.uh-close {
+.welcome-close {
   position: absolute;
   top: 14px;
   right: 16px;
@@ -181,24 +181,24 @@
   cursor: pointer;
 }
 
-.uh-close:hover {
+.welcome-close:hover {
   background: #e3f3ff;
   color: #135b8f;
 }
 
-.uh-step {
+.welcome-step {
   flex: 1;
 }
 
-.uh-step.uh-from-right {
-  animation: uh-in-right 0.4s ease-out;
+.welcome-step.welcome-from-right {
+  animation: welcome-in-right 0.4s ease-out;
 }
 
-.uh-step.uh-from-left {
-  animation: uh-in-left 0.4s ease-out;
+.welcome-step.welcome-from-left {
+  animation: welcome-in-left 0.4s ease-out;
 }
 
-.uh-eyebrow {
+.welcome-eyebrow {
   margin: 0 0 6px;
   font-size: 0.75rem;
   font-weight: 700;
@@ -206,7 +206,7 @@
   color: #3a98c6;
 }
 
-.uh-step h2 {
+.welcome-step h2 {
   margin: 0 0 14px;
   font-size: clamp(1.7rem, 1.3rem + 1.2vw, 2.25rem);
   line-height: 1.15;
@@ -214,58 +214,58 @@
   color: #135b8f;
 }
 
-.uh-body p {
+.welcome-body p {
   margin: 0 0 12px;
   font-size: 0.9375rem;
   line-height: 1.65;
   color: #283653;
 }
 
-.uh-body .uh-lead {
+.welcome-body .welcome-lead {
   font-size: 1.0625rem;
   font-weight: 600;
 }
 
-.uh-body strong {
+.welcome-body strong {
   color: #135b8f;
 }
 
-.uh-pills {
+.welcome-pills {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 16px;
 }
 
-.uh-pill {
+.welcome-pill {
   padding: 6px 14px;
   border-radius: 999px;
   font-size: 0.8125rem;
   font-weight: 600;
 }
 
-.uh-pill-a {
+.welcome-pill--a {
   background: #ece8fd;
   color: #4b3fa6;
 }
 
-.uh-pill-b {
+.welcome-pill--b {
   background: #e3f3ff;
   color: #135b8f;
 }
 
-.uh-pill-c {
+.welcome-pill--c {
   background: #e2f5ee;
   color: #11535d;
 }
 
-.uh-tiles {
+.welcome-tiles {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-.uh-tile {
+.welcome-tile {
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -275,24 +275,24 @@
   transition: transform 0.2s;
 }
 
-.uh-tile:hover {
+.welcome-tile:hover {
   transform: translateY(-3px);
 }
 
-.uh-tile img {
+.welcome-tile img {
   flex-shrink: 0;
   width: 36px;
   height: 36px;
   object-fit: contain;
 }
 
-.uh-tile strong {
+.welcome-tile strong {
   display: block;
   font-size: 0.9375rem;
   line-height: 1.3;
 }
 
-.uh-tile span {
+.welcome-tile span {
   display: block;
   margin-top: 3px;
   font-size: 0.78rem;
@@ -300,27 +300,27 @@
   color: #283653;
 }
 
-.uh-tile-community {
+.welcome-tile--community {
   background: #ece8fd;
   border-color: #c8c1ed;
 }
 
-.uh-tile-learn {
+.welcome-tile--learn {
   background: #e3f3ff;
   border-color: #bed9ea;
 }
 
-.uh-tile-help {
+.welcome-tile--help {
   background: #e2f5ee;
   border-color: #b1e0c4;
 }
 
-.uh-tile-care {
+.welcome-tile--care {
   background: #fef4db;
   border-color: #f3dfa8;
 }
 
-.uh-body .uh-careful {
+.welcome-body .welcome-careful {
   padding: 12px 14px;
   border-left: 4px solid #3a98c6;
   border-radius: 8px;
@@ -328,13 +328,13 @@
   font-size: 0.875rem;
 }
 
-.uh-body .uh-proto {
+.welcome-body .welcome-proto {
   margin-bottom: 0;
   font-size: 0.8125rem;
   color: #587b9b;
 }
 
-.uh-foot {
+.welcome-foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -342,12 +342,12 @@
   margin-top: 18px;
 }
 
-.uh-dots {
+.welcome-dots {
   display: flex;
   gap: 8px;
 }
 
-.uh-dot {
+.welcome-dot {
   width: 10px;
   height: 10px;
   padding: 0;
@@ -360,21 +360,21 @@
     background 0.25s;
 }
 
-.uh-dot.done {
+.welcome-dot.done {
   background: #7fb8dc;
 }
 
-.uh-dot.active {
+.welcome-dot.active {
   width: 28px;
   background: #135b8f;
 }
 
-.uh-nav {
+.welcome-nav {
   display: flex;
   gap: 10px;
 }
 
-.uh-btn {
+.welcome-btn {
   height: 40px;
   padding: 0 24px;
   border: none;
@@ -388,37 +388,37 @@
     transform 0.15s;
 }
 
-.uh-btn:active {
+.welcome-btn:active {
   transform: scale(0.96);
 }
 
-.uh-btn-ghost {
+.welcome-btn--ghost {
   background: #e3f3ff;
   color: #135b8f;
 }
 
-.uh-btn-ghost:hover {
+.welcome-btn--ghost:hover {
   background: #cfe7fb;
 }
 
-.uh-btn-main {
+.welcome-btn--main {
   min-width: 110px;
   background: #126495;
   color: #fff;
 }
 
-.uh-btn-main:hover {
+.welcome-btn--main:hover {
   background: #0d527e;
 }
 
-.uh-close:focus-visible,
-.uh-dot:focus-visible,
-.uh-btn:focus-visible {
+.welcome-close:focus-visible,
+.welcome-dot:focus-visible,
+.welcome-btn:focus-visible {
   outline: 3px solid #f2b84b;
   outline-offset: 2px;
 }
 
-@keyframes uh-fade {
+@keyframes welcome-fade {
   from {
     opacity: 0;
   }
@@ -428,7 +428,7 @@
   }
 }
 
-@keyframes uh-pop {
+@keyframes welcome-pop {
   from {
     opacity: 0;
     transform: translateY(20px) scale(0.94);
@@ -440,7 +440,7 @@
   }
 }
 
-@keyframes uh-float {
+@keyframes welcome-float {
   0%,
   100% {
     transform: translateX(-50%) translateY(0);
@@ -451,7 +451,7 @@
   }
 }
 
-@keyframes uh-drift {
+@keyframes welcome-drift {
   0%,
   100% {
     transform: translate(0, 0);
@@ -462,7 +462,7 @@
   }
 }
 
-@keyframes uh-twinkle {
+@keyframes welcome-twinkle {
   0%,
   100% {
     opacity: 0.3;
@@ -475,7 +475,7 @@
   }
 }
 
-@keyframes uh-bubble {
+@keyframes welcome-bubble {
   from {
     opacity: 0;
     transform: translateX(-50%) translateY(8px) scale(0.85);
@@ -487,7 +487,7 @@
   }
 }
 
-@keyframes uh-in-right {
+@keyframes welcome-in-right {
   from {
     opacity: 0;
     transform: translateX(24px);
@@ -499,7 +499,7 @@
   }
 }
 
-@keyframes uh-in-left {
+@keyframes welcome-in-left {
   from {
     opacity: 0;
     transform: translateX(-24px);
@@ -512,60 +512,61 @@
 }
 
 @media (max-width: 760px) {
-  .uh-box {
+  .welcome-box {
     grid-template-columns: 1fr;
     grid-template-rows: 190px 1fr;
     overflow-y: auto;
   }
 
-  .uh-bubble {
+  .welcome-bubble {
     top: 14px;
     font-size: 0.8125rem;
     padding: 8px 14px;
   }
 
-  .uh-umi {
+  .welcome-umi {
     width: 190px;
     height: 150px;
     bottom: -6px;
   }
 
-  .uh-main {
+  .welcome-main {
     padding: 22px 22px 20px;
     overflow: visible;
   }
 
-  .uh-tiles {
+  .welcome-tiles {
     grid-template-columns: 1fr;
   }
 
-  .uh-foot {
+  .welcome-foot {
     flex-direction: column-reverse;
     align-items: stretch;
   }
 
-  .uh-dots {
+  .welcome-dots {
     justify-content: center;
   }
 
-  .uh-nav {
+  .welcome-nav {
     justify-content: space-between;
   }
 
-  .uh-btn-main {
+  .welcome-btn--main {
     flex: 1;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .uh-welcome.open,
-  .uh-box,
-  .uh-step.uh-from-right,
-  .uh-step.uh-from-left,
-  .uh-bubble.pop,
-  .uh-umi,
-  .uh-orb,
-  .uh-spark {
+  .welcome-backdrop.open,
+  .welcome-box,
+  .welcome-step.welcome-from-right,
+  .welcome-step.welcome-from-left,
+  .welcome-bubble.pop,
+  .welcome-umi,
+  .welcome-orb,
+  .welcome-spark {
     animation: none;
   }
 }
+
