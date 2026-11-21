@@ -52,7 +52,7 @@
       .map(
         (a) => `
       <a class="media-card media-card--v" href="#article/${a.id}" aria-label="Read ${UH.esc(a.title)}">
-        <span class="media-media noselect">${UH.articleImg(a)}
+        <span class="media-media noselect">${UH.articleImage(a)}
           <span class="pill noselect" data-category="${a.category}">${UH.esc(a.category)}</span></span>
         <span class="media-body">
           <span class="media-title clamp-2 noselect">${UH.esc(a.title)}</span>
@@ -70,7 +70,7 @@
   function cardMarkup(a) {
     return `
       <a class="media-card media-card--h" href="#article/${a.id}" aria-label="Read ${UH.esc(a.title)}">
-        <span class="media-media noselect">${UH.articleImg(a)}</span>
+        <span class="media-media noselect">${UH.articleImage(a)}</span>
         <span class="media-body">
           <span class="pill noselect" data-category="${a.category}">${UH.esc(a.category)}</span>
           <span class="media-title clamp-3 noselect">${UH.esc(a.title)}</span>
@@ -149,7 +149,7 @@
       </div>
       <h1 class="article-title">${UH.esc(article.title)}</h1>
       <p class="article-deck">${UH.esc(article.deck)}</p>
-      ${UH.articleImg(article).replace("<img ", '<img class="article-cover" ')}
+      ${UH.articleImage(article).replace("<img ", '<img class="article-cover" ')}
       <div class="article-body">
         ${sections}
         <div class="article-callout"><strong>A gentle reminder:</strong> You deserve support, and you do not have to figure everything out at once. Take what feels useful from this article and move at your own pace.</div>
@@ -188,3 +188,4 @@
   renderFilters();
   route();
 })(window.UH);
+

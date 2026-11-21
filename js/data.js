@@ -583,7 +583,7 @@ UH.articleImageSrc = (article) => {
 };
 
 // <img> markup for an article's picture; falls back to the placeholder if the file is missing.
-UH.articleImg = (article) =>
+UH.articleImage = (article) =>
   `<img src="${UH.articleImageSrc(article).replace(/"/g, "&quot;")}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${UH.ARTICLE_FALLBACK_IMAGE}'">`;
 
 UH.articleCategories = [
@@ -706,3 +706,4 @@ UH.threadTags = [
   { key: "stress", label: "Stress" },
   { key: "other", label: "Other" },
 ];
+

@@ -11,36 +11,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/auth.css">
-  <script src="js/auth.js" defer></script>
   <link rel="stylesheet" href="css/welcome.css">
   <link rel="stylesheet" href="css/common.css">
+  <script src="js/auth.js" defer></script>
   <script src="js/welcome.js" defer></script>
 </head>
 
 <body>
-  <img class="auth-bg" src="assets/images/loginBackground.png">
+  <img class="auth-bg" src="assets/images/login-background.png" alt="">
   <main class="auth-page">
     <section class="auth-card">
       <header class="auth-head">
-        <img class="auth-logo noselect" src="assets/images/logo.svg">
+        <img class="auth-logo noselect" src="assets/images/logo.svg" alt="UniHelper logo">
         <div class="auth-title">
-          <img class="laurel laurel-left noselect" src="assets/icons/laurelLeft.png">
+          <img class="laurel laurel-left noselect" src="assets/icons/laurel-left.png" alt="">
           <h1 class="noselect">Welcome Back!</h1>
           <p class="noselect">Log in to UniHelper</p>
-          <img class="laurel laurel-right noselect" src="assets/icons/laurelRight.png">
+          <img class="laurel laurel-right noselect" src="assets/icons/laurel-right.png" alt="">
         </div>
       </header>
       <form class="auth-form" id="loginForm" novalidate>
         <div class="field">
           <div class="field-wrap">
-            <img class="field-icon noselect" src="assets/icons/envelopeIcon.png">
+            <img class="field-icon noselect" src="assets/icons/envelope-icon.png" alt="">
             <input class="noselect" id="username" type="text" placeholder="Username or Email" autocomplete="username">
           </div>
           <p class="field-error noselect"></p>
         </div>
         <div class="field">
           <div class="field-wrap">
-            <img class="field-icon noselect" src="assets/icons/lockIcon.png">
+            <img class="field-icon noselect" src="assets/icons/lock-icon.png" alt="">
             <input class="noselect" id="password" type="password" placeholder="Password"
               autocomplete="current-password">
             <button class="eye-toggle" type="button" aria-label="Show password"><svg class="eye-icon"
@@ -53,16 +53,17 @@
           <p class="field-error noselect"></p>
         </div>
         <div class="form-row">
-          <label class="remember noselect"><input type="checkbox" id="remember"><span class="box"></span
-              class="noselect">Remember Me</label>
+          <label class="remember noselect"><input type="checkbox" id="remember"><span class="box"></span>Remember
+            Me</label>
           <a class="forgot noselect" href="#" data-wip>Forgot password?</a>
         </div>
-        <button class="auth-button noselect" type="submit">Log In<img src="assets/icons/arrowWhite.png"></button>
+        <button class="auth-button noselect" type="submit">Log In<img src="assets/icons/arrow-white.png"
+            alt=""></button>
         <div class="or-divider noselect"><span></span><small>or</small><span></span></div>
-        <button class="signin-button noselect" type="button" data-wip><img
-            src="assets/images/glogo.svg">Sign in with Google</button>
+        <button class="signin-button noselect" type="button" data-wip><img src="assets/images/glogo.svg" alt="">Sign in
+          with Google</button>
         <p class="switch noselect">Don't have an account? <a class="noselect" href="signup.html">Sign up<img
-              src="assets/icons/arrowBlue.png"></a>
+              src="assets/icons/arrow-blue.png" alt=""></a>
         </p>
         <a class="guest noselect" href="#" id="guestLogin">Sign in as Guest</a>
       </form>
@@ -78,7 +79,7 @@
         <p>Thank you for your patience! (╥﹏╥)<br>- Umi</p>
       </div>
       <button class="wip-back" id="wipBack" type="button">Back</button>
-      <img class="wip-mascot" src="assets/images/mascot.png">
+      <img class="wip-mascot" src="assets/images/mascot.png" alt="">
     </div>
   </div>
 </body>

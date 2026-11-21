@@ -8,8 +8,10 @@
   <noscript><meta http-equiv="refresh" content="0; url=login.html"></noscript>
   <script>
     // Entry point: signed-in visitors go Home, everyone else to Login.
-    var target = "login.html";
-    try { if (localStorage.getItem("unihelper.session")) target = "home.html"; } catch (e) {}
+    let target = "login.html";
+    try {
+      if (localStorage.getItem("unihelper.session")) target = "home.html";
+    } catch (e) {}
     window.location.replace(target);
   </script>
 </head>
@@ -17,4 +19,3 @@
   <p><a href="login.html">Continue to UniHelper</a></p>
 </body>
 </html>
-z

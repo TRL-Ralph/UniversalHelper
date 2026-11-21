@@ -35,7 +35,7 @@
       setActive(pinned);
       return;
     }
-    const line = UH_HEADER() + nav.offsetHeight + 24;
+    const line = getHeaderHeight() + nav.offsetHeight + 24;
     let current = sections[0];
     sections.forEach((section) => {
       if (section.getBoundingClientRect().top <= line) current = section;
@@ -49,7 +49,7 @@
     setActive(current.id);
   }
 
-  function UH_HEADER() {
+  function getHeaderHeight() {
     return (
       parseFloat(
         getComputedStyle(document.documentElement).getPropertyValue(
@@ -134,3 +134,4 @@
          <button class="btn noselect" type="button" data-action="logout">Log Out</button>`;
   }
 })(window.UH);
+
