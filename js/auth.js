@@ -52,7 +52,7 @@ function enterSite() {
   overlay.setAttribute("role", "status");
   overlay.innerHTML = `
     <div class="loading-card">
-      <img src="assets/video/loading.gif" alt="">
+      <img src="assets/video/Loading.gif" alt="">
       <p class="loading-text"></p>
     </div>`;
   const text = overlay.querySelector(".loading-text");
